@@ -1,0 +1,31 @@
+{
+  "name": "redirect-https",
+  "version": "1.0.0",
+  "description": "Redirect from HTTP to HTTPS using meta redirects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Daplie/node-redirect-https.git"
+  },
+  "keywords": [
+    "https",
+    "http",
+    "redirect",
+    "force",
+    "upgrade",
+    "location",
+    "meta"
+  ],
+  "author": "AJ ONeal <coolaj86@gmail.com> (http://coolaj86.com/)",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/Daplie/node-redirect-https/issues"
+  },
+  "homepage": "https://github.com/Daplie/node-redirect-https#readme",
+  "dependencies": {
+    "escape-html": "^1.0.2"
+  }
+}

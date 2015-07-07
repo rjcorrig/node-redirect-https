@@ -2,18 +2,57 @@
 
 Redirect from HTTP to HTTPS using meta redirects
 
+## Installation and Usage
+
 ```bash
 npm install --save redirect-https
 ```
 
+```js
+'use strict';
+
+var express = require('express');
+var app = express();
+
+app.use('/', require('redirect-https')({
+  body: '<!-- Hello Mr Developer! Please use HTTPS instead -->'
+}));
+
+module.exports = app;
+```
+
+## Options
+
+```
+{ port: 443           // defaults to 443
+, body: ''            // defaults to an html comment to use https
+, trustProxy: true    // useful if you haven't set this option in express
+}
+```
+
+* This module will call `next()` if the connection is already tls / https.
+* If `trustProxy` is true, and `X-Forward-Proto` is https, `next()` will be called.
+* If you use `{{URL}}` in the body text it will be replaced with the url
+
+## Demo
+
 ```javascript
+'use strict';
+
 var http = require('http');
 var server = http.createServer();
+var securePort = 8443;
+var insecurePort = process.argv[2] || 8080;
 
 server.on('request', require('redirect-https')({
-  port: 443
+  port: securePort
 , body: '<!-- Hello! Please use HTTPS instead -->'
+, trustProxy: true // default is false
 }));
+
+server.listen(insecurePort, function () {
+  console.log('Listening on http://localhost.daplie.com:' + server.address().port);
+});
 ```
 
 # Why meta redirects?
@@ -33,3 +72,12 @@ Using a meta redirect will break requests from `curl` and api calls from a progr
 # Other strategies
 
 If your application is properly separated between static assets and api, then it would probably be more beneficial to return a 200 OK with an error message inside
+
+# Security
+
+The incoming URL is already URI encoded by the browser but, just in case, I run an html escape on it
+so that no malicious links of this sort will yield unexpected behavior:
+
+  * `http://localhost.daplie.com:8080/"><script>alert('hi')</script>`
+  * `http://localhost.daplie.com:8080/';URL=http://example.com`
+  * `http://localhost.daplie.com:8080/;URL=http://example.com`
