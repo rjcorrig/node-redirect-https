@@ -42,8 +42,8 @@ module.exports = app;
 
 var http = require('http');
 var server = http.createServer();
-var securePort = 8443;
-var insecurePort = process.argv[2] || 8080;
+var securePort = process.argv[2] || 8443;
+var insecurePort = process.argv[3] || 8080;
 
 server.on('request', require('redirect-https')({
   port: securePort
