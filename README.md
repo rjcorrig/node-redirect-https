@@ -32,7 +32,8 @@ module.exports = app;
 
 * This module will call `next()` if the connection is already tls / https.
 * If `trustProxy` is true, and `X-Forward-Proto` is https, `next()` will be called.
-* If you use `{{URL}}` in the body text it will be replaced with the url
+* If you use `{{URL}}` in the body text it will be replaced with a URI encoded and HTML escaped url (it'll look just like it is)
+* If you use `{{HTML_URL}}` in the body text it will be replaced with a URI decoded and HTML escaped url (it'll look just like it would in Chrome's URL bar)
 
 ## Demo
 

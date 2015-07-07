@@ -6,7 +6,7 @@ var port = process.argv[2] || 8080;
 
 server.on('request', require('./')({
   port: 8443
-, body: '<a href="{{URL}}">{{URL}}</a>'
+, body: 'Redirecting to <a href="{{URL}}">{{HTML_URL}}</a>'
 , trustProxy: true // default is false
 }));
 

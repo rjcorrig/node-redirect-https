@@ -32,6 +32,7 @@ module.exports = function (opts) {
     //var encodedLocation = encodeURI(newLocation);
     var escapedLocation = escapeHtml(newLocation);
     var body = opts.body
+          .replace(/{{\s*HTML_URL\s*}}/ig, escapeHtml(decodeURIComponent(newLocation)))
           .replace(/{{\s*URL\s*}}/ig, escapedLocation)
           .replace(/{{\s*UNSAFE_URL\s*}}/ig, newLocation)
           ;
