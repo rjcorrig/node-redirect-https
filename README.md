@@ -2,6 +2,8 @@
 
 Redirect from HTTP to HTTPS using meta redirects
 
+See <https://coolaj86.com/articles/secure-your-redirects/>
+
 ## Installation and Usage
 
 ```bash
