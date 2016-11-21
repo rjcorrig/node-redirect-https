@@ -43,7 +43,7 @@ module.exports = function (opts) {
       //+ '  <style>* { background-color: white; color: white; text-decoration: none; }</style>\n'
       + '  <META http-equiv="refresh" content="0;URL=\'' + escapedLocation + '\'">\n'
       + '</head>\n'
-      + '<body">\n' + body + '\n</body>\n'
+      + '<body>\n' + body + '\n</body>\n'
       + '</html>\n'
       ;
 
