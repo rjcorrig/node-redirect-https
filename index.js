@@ -24,7 +24,7 @@ module.exports = function (opts) {
       return;
     }
 
-    var url = req.url;
+    var url = req.originalUrl;
     var host = req.headers.host || '';
 		if (!/:\d+/.test(host) && 443 !== opts.port) {
 			// we are using standard port 80, but we aren't using standard port 443
